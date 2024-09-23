@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(path = "/admission")
+@RequestMapping(path = "/{admissionId}")
 @RequiredArgsConstructor
 public class AdmissionController {
 
@@ -25,8 +25,8 @@ public class AdmissionController {
     }
 
     @PutMapping(path = "/{admissionId}/student/{studentId}")
-    public AdmissionEntity admissionRecordOfStudent(@RequestBody Long admissionId,
-                                                    @RequestBody Long studentId){
+    public AdmissionEntity admissionRecordOfStudent(@PathVariable Long admissionId,
+                                                    @PathVariable Long studentId){
         return admissionService.admissionRecordOfStudent(admissionId, studentId);
     }
 }
